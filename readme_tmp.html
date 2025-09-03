@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>readme.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="tips-for-data-analyst-report">Tips for Data Analyst Report</h1>
+<p>This repository contains a collection of tips and best practices for creating effective data analyst reports. Whether you're a beginner or an experienced analyst, these tips will help you communicate your findings clearly and effectively.</p>
+<h2 id="1-installation-by-create-a-python-virtual-environment">1. Installation by create a python virtual environment</h2>
+<p>To set up a Python virtual environment for working with data analysis reports, follow these steps:</p>
+<pre class="hljs"><code><div><span class="hljs-comment"># Create a new virtual environment</span>
+python -m venv .venv
+<span class="hljs-comment"># Activate the virtual environment in windows using gitbash</span>
+<span class="hljs-built_in">source</span> .venv/Scripts/activate
+
+<span class="hljs-comment"># create a requirements.txt file and add libraries inside</span>
+<span class="hljs-comment"># Install required packages</span>
+pip install -r requirements.txt
+</div></code></pre>
+<p>or you can install the packages individually using pip:</p>
+<pre class="hljs"><code><div>pip install pandas numpy matplotlib seaborn plotly
+pip install ipykernel openpyxl
+</div></code></pre>
+<h2 id="2-create-a-jupyter-notebook">2. Create a Jupyter Notebook</h2>
+<pre class="hljs"><code><div><span class="hljs-comment"># create a ipynb file</span>
+mkdir scripts
+<span class="hljs-built_in">cd</span> scripts
+touch 01_data_analysis.ipynb
+</div></code></pre>
+<h3 id="21-use-of-github-copilot-for-data-anlytics-report">2.1. Use of github copilot for data anlytics report</h3>
+<p>Here is the prompt no. 1:</p>
+<blockquote>
+<ol>
+<li>I have df in this notebook, which is tips data.
+Act as a data analyst, and write the code using python libaries pandas, numpy, seabron, matplotlib and plot, to do the basic data analytics tasks such as:</li>
+</ol>
+</blockquote>
+<ol>
+<li>Data composition report</li>
+<li>Data distribution report</li>
+<li>Data comparison report</li>
+<li>Data relationship report</li>
+</ol>
+<blockquote>
+<p>If you need to do the statistics please install stats models and scipy libraries using code cells in jupyter notebook.</p>
+</blockquote>
+<blockquote>
+<p>If you want to create a plot and whenever you do that, please intepret the results as I would like to submit that in a report form</p>
+</blockquote>
+<p>Lets see what you have got, i am really looking forward to your code without bugs and best possible plots.</p>
+<h2 id="complete-report-is-here">Complete report is here:</h2>
+<h1 id="restaurant-tips-data-analysis-report">Restaurant Tips Data Analysis Report</h1>
+<p><strong>Prepared by:</strong> Data Analytics Team<br>
+<strong>Date:</strong> January 2025<br>
+<strong>Dataset:</strong> Restaurant Tips Dataset (244 observations)</p>
+<hr>
+<h2 id="executive-summary">Executive Summary</h2>
+<p>This report presents a comprehensive analysis of restaurant tipping patterns based on a dataset of 244 dining transactions. The analysis examines data composition, distribution patterns, comparative behaviors across customer segments, and relationships between key variables. Key findings reveal strong correlations between bill amounts and tips, distinctive patterns across customer demographics, and actionable insights for restaurant operations.</p>
+<p><strong>Key Findings:</strong></p>
+<ul>
+<li>Average tip percentage: 16.1%</li>
+<li>Strong positive correlation between total bill and tip amount (r=0.676)</li>
+<li>Weekend and dinner service generate higher revenue</li>
+<li>Male customers and larger parties contribute to higher absolute tips</li>
+<li>No significant data quality issues with complete records</li>
+</ul>
+<hr>
+<h2 id="1-data-composition-analysis">1. Data Composition Analysis</h2>
+<h3 id="dataset-overview">Dataset Overview</h3>
+<p>The restaurant tips dataset contains <strong>244 complete observations</strong> across <strong>7 variables</strong>, representing a clean and well-structured dataset with no missing values.</p>
+<h3 id="variable-structure">Variable Structure</h3>
+<ul>
+<li>
+<p><strong>Numerical Variables (4):</strong></p>
+<ul>
+<li><code>total_bill</code>: Restaurant bill amount ($3.07 - $50.81)</li>
+<li><code>tip</code>: Tip amount ($1.00 - $10.00)</li>
+<li><code>size</code>: Party size (1-6 people)</li>
+<li><code>tip_percentage</code>: Calculated tip percentage (derived variable)</li>
+</ul>
+</li>
+<li>
+<p><strong>Categorical Variables (3):</strong></p>
+<ul>
+<li><code>sex</code>: Customer gender (Male: 64%, Female: 36%)</li>
+<li><code>smoker</code>: Smoking status (No: 76%, Yes: 24%)</li>
+<li><code>day</code>: Day of week (Thur, Fri, Sat, Sun)</li>
+<li><code>time</code>: Service time (Dinner: 68%, Lunch: 32%)</li>
+</ul>
+</li>
+</ul>
+<h3 id="data-quality-assessment">Data Quality Assessment</h3>
+<ul>
+<li><strong>Completeness:</strong> 100% - No missing values detected</li>
+<li><strong>Consistency:</strong> All variables show expected ranges and formats</li>
+<li><strong>Accuracy:</strong> No obvious outliers or data entry errors identified</li>
+<li><strong>Validity:</strong> All categorical values fall within expected domains</li>
+</ul>
+<p><em>[Insert Figure 1: Data Composition Summary Table]</em></p>
+<hr>
+<h2 id="2-data-distribution-analysis">2. Data Distribution Analysis</h2>
+<h3 id="numerical-variables-distribution">Numerical Variables Distribution</h3>
+<p><strong>Total Bill Distribution:</strong></p>
+<ul>
+<li>Mean: $19.79, Median: $17.80</li>
+<li>Right-skewed distribution indicating most bills are moderate with few high-value outliers</li>
+<li>Range: $3.07 to $50.81</li>
+<li>75% of bills are under $24.13</li>
+</ul>
+<p><strong>Tip Amount Distribution:</strong></p>
+<ul>
+<li>Mean: $2.98, Median: $2.90</li>
+<li>Similar right-skewed pattern following bill distribution</li>
+<li>Range: $1.00 to $10.00</li>
+<li>Strong relationship with bill amount</li>
+</ul>
+<p><strong>Tip Percentage Distribution:</strong></p>
+<ul>
+<li>Mean: 16.1%, Median: 15.5%</li>
+<li>Approximately normal distribution</li>
+<li>Most customers tip between 12-20%</li>
+<li>Few extreme cases below 5% or above 25%</li>
+</ul>
+<p><strong>Party Size Distribution:</strong></p>
+<ul>
+<li>Mode: 2 people (most common)</li>
+<li>Range: 1-6 people</li>
+<li>75% of parties are 2-3 people</li>
+<li>Larger groups (4+) represent opportunity for higher revenue</li>
+</ul>
+<p><em>[Insert Figure 2: Distribution Plots for Numerical Variables]</em>
+<em>[Insert Figure 3: Box Plots for Outlier Detection]</em></p>
+<h3 id="categorical-variables-distribution">Categorical Variables Distribution</h3>
+<p><strong>Customer Demographics:</strong></p>
+<ul>
+<li><strong>Gender Split:</strong> 64% Male, 36% Female</li>
+<li><strong>Smoking Status:</strong> 76% Non-smokers, 24% Smokers</li>
+</ul>
+<p><strong>Service Patterns:</strong></p>
+<ul>
+<li><strong>Day Distribution:</strong> Weekend-heavy with Saturday and Sunday being busiest</li>
+<li><strong>Time Distribution:</strong> 68% Dinner service, 32% Lunch service</li>
+</ul>
+<p><em>[Insert Figure 4: Categorical Variables Distribution Charts]</em></p>
+<hr>
+<h2 id="3-data-comparison-analysis">3. Data Comparison Analysis</h2>
+<h3 id="tipping-behavior-by-customer-segments">Tipping Behavior by Customer Segments</h3>
+<p><strong>Gender Comparison:</strong></p>
+<ul>
+<li>Male customers: Average tip $3.09</li>
+<li>Female customers: Average tip $2.83</li>
+<li>Difference primarily attributed to higher bill amounts rather than generosity</li>
+<li>No statistically significant difference in tip percentages</li>
+</ul>
+<p><strong>Smoking Status Comparison:</strong></p>
+<ul>
+<li>Smokers: Average tip $3.01</li>
+<li>Non-smokers: Average tip $2.97</li>
+<li>No significant difference in tipping behavior (p-value &gt; 0.05)</li>
+</ul>
+<p><strong>Day of Week Analysis:</strong></p>
+<ul>
+<li><strong>Highest Tips:</strong> Sunday ($3.26 average)</li>
+<li><strong>Lowest Tips:</strong> Thursday ($2.77 average)</li>
+<li>Weekend days show consistently higher absolute tips</li>
+<li>Statistical significance confirmed (ANOVA p-value &lt; 0.05)</li>
+</ul>
+<p><strong>Service Time Comparison:</strong></p>
+<ul>
+<li><strong>Dinner:</strong> Average tip $3.10</li>
+<li><strong>Lunch:</strong> Average tip $2.73</li>
+<li>Dinner customers tip 13.5% more on average</li>
+<li>Correlation with higher dinner bill amounts</li>
+</ul>
+<p><em>[Insert Figure 5: Tip Comparison Across Categories]</em>
+<em>[Insert Figure 6: Tip Percentage Comparison Charts]</em></p>
+<h3 id="statistical-significance-testing">Statistical Significance Testing</h3>
+<ul>
+<li>Gender differences: Not statistically significant (p &gt; 0.05)</li>
+<li>Smoking status: No significant difference (p &gt; 0.05)</li>
+<li>Day of week: Statistically significant variation (p &lt; 0.05)</li>
+<li>Service time: Significant difference (p &lt; 0.05)</li>
+</ul>
+<hr>
+<h2 id="4-data-relationship-analysis">4. Data Relationship Analysis</h2>
+<h3 id="correlation-analysis">Correlation Analysis</h3>
+<p><strong>Strong Positive Relationships:</strong></p>
+<ul>
+<li>
+<p><strong>Total Bill ↔ Tip Amount:</strong> r = 0.676 (Strong)</p>
+<ul>
+<li>For every $10 increase in bill, tip increases by approximately $1.83</li>
+<li>Highly significant relationship (p &lt; 0.001)</li>
+</ul>
+</li>
+<li>
+<p><strong>Party Size ↔ Total Bill:</strong> r = 0.598 (Moderate-Strong)</p>
+<ul>
+<li>Larger parties generate proportionally higher bills</li>
+<li>Each additional person adds approximately $7.44 to the bill</li>
+</ul>
+</li>
+</ul>
+<p><strong>Interesting Inverse Relationships:</strong></p>
+<ul>
+<li><strong>Total Bill ↔ Tip Percentage:</strong> r = -0.203 (Weak Negative)
+<ul>
+<li>Higher bills receive slightly lower tip percentages</li>
+<li>Customers may tip a flat amount rather than strict percentage</li>
+</ul>
+</li>
+</ul>
+<p><strong>Moderate Relationships:</strong></p>
+<ul>
+<li><strong>Party Size ↔ Tip Amount:</strong> r = 0.489 (Moderate)
+<ul>
+<li>Larger groups tip more in absolute terms</li>
+<li>Relationship mediated through bill amount</li>
+</ul>
+</li>
+</ul>
+<p><em>[Insert Figure 7: Correlation Heatmap]</em>
+<em>[Insert Figure 8: Scatter Plots with Regression Lines]</em></p>
+<h3 id="advanced-relationship-patterns">Advanced Relationship Patterns</h3>
+<p><strong>Multi-variable Analysis:</strong></p>
+<ul>
+<li>Dinner customers show stronger bill-to-tip correlation than lunch</li>
+<li>Male customers at dinner generate highest absolute tips</li>
+<li>Weekend parties of 3+ show premium tipping behavior</li>
+<li>Smoking status shows no interaction effects with other variables</li>
+</ul>
+<p><strong>Categorical Variable Associations:</strong></p>
+<ul>
+<li>Gender and smoking status: Independent (χ² p &gt; 0.05)</li>
+<li>Day and time: Significant association (χ² p &lt; 0.001)</li>
+<li>Time preferences vary by day of week</li>
+</ul>
+<p><em>[Insert Figure 9: Advanced Relationship Visualizations]</em></p>
+<hr>
+<h2 id="5-business-insights-and-recommendations">5. Business Insights and Recommendations</h2>
+<h3 id="revenue-optimization">Revenue Optimization</h3>
+<ol>
+<li><strong>Focus on Dinner Service:</strong> 68% of business with higher per-customer value</li>
+<li><strong>Weekend Marketing:</strong> Saturday/Sunday show peak performance</li>
+<li><strong>Party Size Strategy:</strong> Target groups of 3+ for maximum revenue impact</li>
+<li><strong>Bill Scaling:</strong> Understand that tip percentages may decrease on high-value bills</li>
+</ol>
+<h3 id="operational-insights">Operational Insights</h3>
+<ol>
+<li><strong>Staffing Patterns:</strong> Align staff levels with dinner/weekend peaks</li>
+<li><strong>Customer Segmentation:</strong> Male dinner customers and larger parties are high-value segments</li>
+<li><strong>Service Quality:</strong> Maintain consistent service regardless of bill size</li>
+<li><strong>Capacity Planning:</strong> Weekend dinner combinations require maximum capacity</li>
+</ol>
+<h3 id="strategic-recommendations">Strategic Recommendations</h3>
+<ol>
+<li><strong>Loyalty Programs:</strong> Target frequent dinner customers and larger parties</li>
+<li><strong>Menu Pricing:</strong> Consider tip percentage decline on higher-value items</li>
+<li><strong>Service Training:</strong> Focus on consistent percentage-based tipping education</li>
+<li><strong>Marketing Timing:</strong> Promote weekend dinner experiences for maximum ROI</li>
+</ol>
+<hr>
+<h2 id="6-limitations-and-future-analysis">6. Limitations and Future Analysis</h2>
+<h3 id="current-limitations">Current Limitations</h3>
+<ul>
+<li>Single restaurant/chain data (generalizability questions)</li>
+<li>Limited time period (seasonal variations unknown)</li>
+<li>No customer satisfaction or service quality metrics</li>
+<li>Missing payment method information</li>
+</ul>
+<h3 id="recommended-future-analysis">Recommended Future Analysis</h3>
+<ol>
+<li><strong>Seasonal Patterns:</strong> Year-round data collection</li>
+<li><strong>Service Quality Metrics:</strong> Customer satisfaction correlation with tips</li>
+<li><strong>Payment Methods:</strong> Cash vs. card tipping behavior analysis</li>
+<li><strong>Competitive Analysis:</strong> Industry benchmarking</li>
+<li><strong>Economic Factors:</strong> Impact of economic conditions on tipping</li>
+</ol>
+<hr>
+<h2 id="7-conclusions">7. Conclusions</h2>
+<p>The restaurant tips dataset analysis reveals clear patterns in customer behavior and tipping practices. The strong correlation between bill amounts and tips provides a reliable foundation for revenue forecasting, while the identification of high-value customer segments (dinner customers, weekend visitors, larger parties) offers actionable insights for business optimization.</p>
+<p>Key strategic takeaways include the importance of dinner service optimization, weekend capacity management, and understanding the nuanced relationship between bill size and tip percentages. The analysis supports data-driven decision making for restaurant operations, marketing strategies, and service delivery improvements.</p>
+<p>The clean, complete nature of the dataset and the statistical significance of key relationships provide confidence in these findings and their applicability to restaurant business strategy.</p>
+<hr>
+<p><strong>Report Prepared Using:</strong></p>
+<ul>
+<li>Python 3.x with pandas, numpy, matplotlib, seaborn</li>
+<li>Statistical analysis with scipy and statsmodels</li>
+<li>Data visualization and correlation analysis</li>
+<li>Hypothesis testing and significance evaluation</li>
+</ul>
+<p><em>Note: All figures referenced in this report are generated from the accompanying Jupyter notebook analysis and should be inserted at the indicated locations for the complete PDF version.</em></p>
+<p>These changes are made with AI (Github Copilot).</p>
+<h2 style="font-family: &apos;poppins&apos;; font-weight: bold; color: Green;">&#x1F468;&#x200D;&#x1F4BB;Author: Nazakat ALi </h2>
+<p><a href="https://github.com/nazakatalicoder"><img src="https://img.shields.io/badge/GitHub-Profile-blue?style=for-the-badge&amp;logo=github" alt="GitHub"></a>
+<a href="https://www.kaggle.com/mnazakatiqbal"><img src="https://img.shields.io/badge/Kaggle-Profile-blue?style=for-the-badge&amp;logo=kaggle" alt="Kaggle"></a>
+<a href="https://www.linkedin.com/in/m-nazakat-iqbal-359274343/"><img src="https://img.shields.io/badge/LinkedIn-Profile-blue?style=for-the-badge&amp;logo=linkedin" alt="LinkedIn"></a>
+<a href="https://www.facebook.com/nazakat.iqbal.713481"><img src="https://img.shields.io/badge/Facebook-Profile-blue?style=for-the-badge&amp;logo=facebook" alt="Facebook"></a>
+<a href="mailto:xn--mnazakatiqbalgmail-nta.com"><img src="https://img.shields.io/badge/Email-Contact%20Me-red?style=for-the-badge&amp;logo=email" alt="Email"></a></p>
+
+</body>
+</html>
